@@ -1,0 +1,695 @@
+/* ベース */
+body {
+    font-family: "Yu Gothic", "游ゴシック", YuGothic, "游ゴシック体", "ヒラギノ角ゴ Pro W3", "メイリオ", sans-serif;
+    font-weight: 500;
+    width: 100%;
+    color: #333;
+}
+
+/* 共通 */
+.inner {
+    max-width: 1024px;
+    padding: 0 20px;
+    margin: 0 auto;
+}
+input,
+textarea {
+    border: 1px solid #95989a;
+    padding: 8px;
+    width: 100%;
+    border-radius: 3px;
+}
+input[type="file"] {
+    border: none;
+    padding: 0;
+}
+input[type="checkbox"] {
+    display: none;
+}
+input[type="checkbox"] + label {
+    box-sizing: border-box;
+    cursor: pointer;
+    position: relative;
+    padding-left: 32px;
+    width: 100%;
+}
+input[type="checkbox"] + label::before,
+input[type="checkbox"] + label::after {
+    position: absolute;
+    display: block;
+}
+input[type="checkbox"] + label::before {
+    content: "";
+    top: 50%;
+    left: 0;
+    transform: translateY(-50%);
+    width: 27px;
+    height: 27px;
+    background: #fff;
+    border: 1px solid rgba(24, 23, 67, 0.2);
+    box-shadow: 0 2px 4px rgba(254, 30, 154, 0.1);
+    border-radius: 6px;
+}
+input[type="checkbox"] + label::after {
+    display: none;
+}
+input[type="checkbox"]:checked + label::after {
+    display: block;
+    content: "";
+    background-image: url(../img/check_rainbow.png);
+    height: 11px;
+    width: 14px;
+    background-size: cover;
+    background-repeat: no-repeat;
+    top: 50%;
+    left: 7px;
+    transform: translateY(-50%);
+}
+.form-btn,
+.register-btn {
+    background-color: #254dde;
+    color: #fff;
+    text-align: center;
+}
+.form-btn:hover,
+.register-btn:hover {
+    transition: 0.5s;
+    background-color: #10215e;
+}
+.picture-form-btn {
+    width: 138px;
+}
+a {
+    text-decoration: underline;
+    color: -webkit-link;
+}
+img {
+    width: 100%;
+    height: auto;
+    vertical-align: bottom;
+    object-fit: cover;
+}
+header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 12px 20px;
+    background: linear-gradient(to bottom left, #00ffff, #254dde);
+}
+header h1 {
+    font-size: 20px;
+    font-weight: bold;
+    color: #fff;
+    text-shadow: 0 0 6px rgba(0, 0, 0, 0.5);
+}
+header .toggle-menu {
+    width: 32px;
+    height: 32px;
+    background-color: #fff;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 6px rgba(24, 23, 67, 0.2);
+}
+.toggle-menu img {
+    width: 23px;
+}
+.sp-menu {
+    position: fixed;
+    width: 100%;
+    height: 100vh;
+    top: -100%;
+    left: 0;
+    background-color: rgba(23, 30, 67, 0.5);
+    transition: 0.5s;
+    z-index: 10;
+}
+.sp-menu.active {
+    top: 0;
+}
+.pc-menu {
+    display: none;
+}
+.menu nav {
+    display: flex;
+}
+.menu nav a {
+    text-decoration: none;
+    color: #fff;
+    font-weight: bold;
+    text-shadow: 0 0 3px rgba(0, 0, 0, 0.8);
+}
+.sp-menu .close-btn {
+    display: block;
+    margin-left: auto;
+    padding: 16px 0 16px 0;
+    color: #fff;
+    cursor: pointer;
+    font-size: 18px;
+    font-weight: bold;
+    text-shadow: 0 0 3px rgba(0, 0, 0, 0.8);
+}
+.sp-menu nav {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.sp-menu nav a {
+    width: 100vw;
+    text-align: center;
+    font-size: 18px;
+    padding: 16px 0;
+}
+.sp-menu nav a:hover {
+    transition: 0.5s;
+    background-color: rgba(0, 0, 0, 0.7);
+}
+.pc-menu nav a {
+    padding-left: 16px;
+}
+.content {
+    padding: 32px 0;
+}
+.delete-btn .material-symbols-outlined {
+    color: #de254d;
+}
+.task-form {
+    padding-bottom: 24px;
+}
+.task-form dt,
+.task-form dd {
+    margin-bottom: 8px;
+}
+.form-heading {
+    font-size: 20px;
+    font-weight: bold;
+}
+.user-menu {
+    display: flex;
+    flex-direction: column;
+    align-items: end;
+    margin-bottom: 24px;
+}
+.user-menu .profile {
+    width: 60px;
+    margin: 0 10px 4px 0;
+}
+.user-menu .profile img {
+    border: 1px solid rgba(24, 23, 67, 0.2);
+    border-radius: 50%;
+}
+.tasks-heading {
+    font-size: 20px;
+    font-weight: bold;
+    padding-bottom: 16px;
+}
+.today-tasks li {
+    border: 1px solid #181743;
+    border-radius: 6px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.6);
+    margin-bottom: 16px;
+    padding: 12px 12px 12px 10px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.today-tasks li .edit-btn {
+    margin-right: 4px;
+}
+.count span {
+    font-weight: bold;
+    margin-left: 4px;
+}
+.site-form {
+    padding-bottom: 24px;
+}
+.site-form label {
+    display: block;
+    margin-bottom: 4px;
+}
+.site-form #site-name,
+.site-form #site-address {
+    margin-bottom: 8px;
+}
+.site-form dt,
+.site-form dd {
+    margin-bottom: 8px;
+}
+.pictures-container {
+    padding-top: 24px;
+}
+.pictures-container h2 {
+    font-size: 20px;
+    font-weight: bold;
+    padding-bottom: 8px;
+}
+.error {
+    font-size: 14px;
+    color: #de5a26;
+}
+.pictures-container .form-btn {
+    margin-top: 8px;
+}
+.pictures-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    margin-bottom: -4.776119402%;
+}
+.picture-item {
+    position: relative;
+    width: 47.6%;
+    border: 1px solid rgba(24, 23, 67, 0.2);
+    margin: 0 4.776119402% 4.776119402% 0;
+}
+.picture-item:nth-child(2n) {
+    margin-right: 0;
+}
+.picture-item img {
+    aspect-ratio: 4 / 3;
+}
+.picture-item .delete-btn {
+    position: absolute;
+    top: 0;
+    right: 0;
+    border: 1px solid rgba(24, 23, 67, 0.2);
+    box-shadow: 0 4px 6px rgba(24, 23, 67, 0.2);
+    transition: 0.5s;
+    opacity: 0;
+}
+.picture-item:hover.picture-item .delete-btn {
+    opacity: 1;
+    background-color: #ffff;
+}
+.nav-area {
+    display: flex;
+    justify-content: space-between;
+    align-items: end;
+    padding: 0 60px 16px 60px;
+}
+.nav-area a {
+    text-decoration: none;
+}
+.nav-area button {
+    width: 46px;
+    height: 46px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.nav-area .tasks-btn,
+.nav-area .picture-btn {
+    background-color: #fe1e9a;
+    background: linear-gradient(to bottom left, #fe1e9a, #254dde);
+    box-shadow: 0 3px 6px rgba(254, 30, 154, 0.3);
+}
+.nav-area .picture-btn .material-symbols-outlined {
+    color: #fff;
+}
+
+.nav-area button img {
+    vertical-align: middle;
+}
+.nav-area .tasks-btn img {
+    width: 14px;
+}
+.nav-area .hamburger-btn {
+    width: 56px;
+    height: 56px;
+    background-color: #fff;
+    box-shadow: 0 4px 6px rgba(24, 23, 67, 0.3);
+}
+.nav-area .hamburger-btn img {
+    width: 26px;
+}
+.nav-area .add-btn {
+    background-color: #fe1e9a;
+    background: linear-gradient(to bottom left, #00ffff, #254dde);
+    box-shadow: 0 3px 6px rgba(0, 255, 255, 0.3);
+}
+.nav-area .add-btn img {
+    width: 12px;
+}
+
+/* ユーザー登録画面 */
+.register-page dt {
+    padding-bottom: 8px;
+}
+.register-page dt .required {
+    margin-left: 8px;
+    font-size: 14px;
+    background-color: #de5a26;
+    color: #fff;
+    padding: 2px;
+}
+.register-page dd {
+    padding-bottom: 16px;
+}
+
+/* チェック画面 */
+.register-check-page p {
+    padding-bottom: 16px;
+}
+.register-check-page dt {
+    padding-bottom: 8px;
+}
+.register-check-page dd {
+    padding-bottom: 16px;
+}
+.register-check-page .register-area {
+    display: flex;
+    align-items: center;
+}
+.register-check-page .back-btn {
+    background-color: #dedede;
+    text-decoration: underline;
+    padding: 8px;
+    border: 1px solid #95989a;
+    color: -webkit-link;
+    margin-right: 16px;
+    font-size: 14px;
+}
+.register-check-page .register-btn {
+    width: auto;
+    padding: 8px 24px;
+}
+.register-check-page .profile-icon {
+    width: 120px;
+}
+
+/* ユーザー登録完了画面 */
+.thanks-page p:first-child {
+    padding-bottom: 8px;
+}
+
+/* ログイン画面 */
+.login-page #lead {
+    padding-bottom: 16px;
+}
+.login-page #lead p {
+    padding-bottom: 8px;
+}
+.login-page dt {
+    padding-bottom: 8px;
+}
+.login-page dd {
+    padding-bottom: 16px;
+}
+
+/* タスク編集ページ */
+.update-page .task-form {
+    padding-bottom: 0;
+}
+
+/* 業務現場一覧ページ */
+.site-page h2 {
+    font-size: 20px;
+    font-weight: bold;
+    padding-bottom: 16px;
+}
+.site-page table {
+    width: 100%;
+}
+.site-page table th,
+.site-page table td {
+    border: 1px solid #95989a;
+    padding: 8px 4px;
+}
+.site-page table td {
+    font-size: 14px;
+}
+.site-page table th:last-child,
+.site-page table td:last-child {
+    text-align: center;
+}
+.site-page table td:last-child a {
+    text-decoration: none;
+}
+.site-page table .edit-btn {
+    margin-right: 4px;
+}
+.site-page .nav-area {
+    padding: 0 109px 16px 109px;
+}
+
+/* 業務現場編集ページ */
+.site-update-page .site-form {
+    padding-bottom: 0;
+}
+/* 写真一覧ページ */
+.pictures-page .pictures-container {
+    padding-top: 0;
+}
+.pictures-page .nav-area {
+    padding: 0 109px 16px 109px;
+}
+
+/* 業務詳細ページ */
+.single-site-page dl {
+    margin-bottom: 16px;
+}
+.single-site-page .wrapper {
+    display: flex;
+    width: 100%;
+}
+.single-site-page .wrapper dt {
+    margin-right: 4px;
+}
+.single-site-page .site-name,
+.single-site-page .site-address {
+    margin-bottom: 8px;
+}
+.single-site-page .picture-form {
+    margin-bottom: 16px;
+}
+
+/* タブレット用レイアウト */
+@media (min-width: 768px) {
+    /* 共通 */
+    input[type="checkbox"] + label {
+        padding-left: 40px;
+    }
+    input[type="checkbox"] + label::before {
+        width: 32px;
+        height: 32px;
+    }
+    input[type="checkbox"]:checked + label::after {
+        height: 15px;
+        width: 18px;
+    }
+    header {
+        padding: 20px;
+    }
+    header h1 {
+        font-size: 24px;
+    }
+    header .toggle-menu {
+        display: none;
+    }
+    .sp-menu .close-btn {
+        font-size: 20px;
+        padding: 24px 0 24px 0;
+    }
+    .sp-menu nav a {
+        font-size: 20px;
+        padding: 24px 0;
+    }
+    .pc-menu {
+        display: block;
+    }
+    .content {
+        padding: 48px 0;
+    }
+    .edit-btn .material-symbols-outlined {
+        font-size: 32px;
+    }
+    .delete-btn .material-symbols-outlined {
+        font-size: 32px;
+    }
+    .task-form {
+        padding-bottom: 32px;
+    }
+    .task-form dt,
+    .task-form dd {
+        margin-bottom: 16px;
+    }
+    .user-menu {
+        font-size: 18px;
+        margin-bottom: 32px;
+    }
+    .user-menu .profile {
+        width: 80px;
+        margin: 0 5px 8px 0;
+    }
+    .form-heading {
+        font-size: 24px;
+    }
+    .form-btn,
+    .register-btn {
+        font-size: 18px;
+    }
+    .tasks-heading {
+        font-size: 24px;
+        padding-bottom: 24px;
+    }
+    .today-tasks li {
+        margin-bottom: 24px;
+        padding: 16px 10px;
+        font-size: 18px;
+    }
+    .today-tasks li .edit-btn {
+        margin-right: 8px;
+    }
+    .count {
+        font-size: 18px;
+    }
+    .site-form {
+        padding-bottom: 32px;
+    }
+    .site-form label {
+        margin-bottom: 8px;
+    }
+    .site-form #site-name,
+    .site-form #site-address {
+        margin-bottom: 16px;
+    }
+    .site-form dt,
+    .site-form dd {
+        margin-bottom: 16px;
+    }
+    .pictures-container {
+        padding-top: 32px;
+    }
+    .pictures-container h2 {
+        font-size: 24px;
+        padding-bottom: 16px;
+    }
+    .error {
+        font-size: 16px;
+    }
+    .pictures-container .form-btn {
+        margin-top: 16px;
+    }
+    .pictures-wrapper {
+        margin-bottom: -2.1978022%;
+    }
+    .picture-item {
+        width: 31.868132%;
+        margin: 0 2.1978022% 2.1978022% 0;
+    }
+    .picture-item:nth-child(2n) {
+        margin-right: 2.1978022%;
+    }
+    .picture-item:nth-child(3n) {
+        margin-right: 0;
+    }
+    .nav-area {
+        padding: 0 60px 32px 60px;
+    }
+    .nav-area button {
+        width: 62px;
+        height: 62px;
+    }
+    .nav-area .tasks-btn img {
+        width: 22px;
+    }
+    .nav-area .picture-btn .material-symbols-outlined {
+        font-size: 32px;
+    }
+    .nav-area .hamburger-btn {
+        width: 72px;
+        height: 72px;
+    }
+    .nav-area .hamburger-btn img {
+        width: 34px;
+    }
+    .nav-area .add-btn img {
+        width: 20px;
+    }
+
+    /* ユーザー登録画面 */
+    .register-page dt {
+        padding-bottom: 16px;
+    }
+    .register-page dt .required {
+        margin-left: 16px;
+        font-size: 16px;
+        padding: 4px;
+    }
+    .register-page dd {
+        padding-bottom: 16px;
+    }
+
+    /* チェック画面 */
+    .register-check-page p {
+        padding-bottom: 24px;
+    }
+    .register-check-page dt {
+        padding-bottom: 16px;
+    }
+    .register-check-page dd {
+        padding-bottom: 24px;
+    }
+    .register-check-page .back-btn {
+        font-size: 16px;
+    }
+    .register-check-page .profile-icon {
+        width: 180px;
+    }
+
+    /* ユーザー登録完了画面 */
+    .thanks-page p:first-child {
+        padding-bottom: 16px;
+    }
+
+    /* ログイン画面 */
+    .login-page #lead {
+        padding-bottom: 24px;
+    }
+    .login-page #lead p {
+        padding-bottom: 12px;
+    }
+    .login-page dt {
+        padding-bottom: 16px;
+    }
+    .login-page dd {
+        padding-bottom: 24px;
+    }
+
+    /* 業務現場一覧ページ */
+    .site-page h2 {
+        font-size: 24px;
+        padding-bottom: 24px;
+    }
+    .site-page table th,
+    .site-page table td {
+        padding: 16px 8px;
+    }
+    .site-page table td {
+        font-size: 16px;
+    }
+    .site-page table .edit-btn {
+        margin-right: 8px;
+    }
+    .site-page .nav-area {
+        padding: 0 109px 32px 109px;
+    }
+
+    /* 業務詳細ページ */
+    .single-site-page dl {
+        margin-bottom: 24px;
+    }
+    .single-site-page .site-name,
+    .single-site-page .site-address {
+        margin-bottom: 16px;
+    }
+    .single-site-page .picture-form {
+        margin-bottom: 24px;
+    }
+
+    /* 写真一覧ページ */
+    .pictures-page .nav-area {
+        padding: 0 109px 32px 109px;
+    }
+}
